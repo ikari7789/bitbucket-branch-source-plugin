@@ -103,8 +103,8 @@ public class BitbucketGitSCMBuilder extends GitSCMBuilder<BitbucketGitSCMBuilder
                 String branchName = ((PullRequestSCMHead) head).getBranchName();
                 withRefSpec("+refs/heads/" + branchName + ":refs/remotes/@{remote}/" + head.getName());
             } else {
-                String pullId = ((PullRequestSCMHead) head).getId();
-                withRefSpec("+refs/pull-requests/" + pullId + "/from:refs/remotes/@{remote}/" + head.getName());
+                String branchName = ((PullRequestSCMHead) head).getBranchName();
+                withRefSpec("+refs/heads/" + branchName + ":refs/remotes/@{remote}/" + head.getName());
             }
         } else if (head instanceof TagSCMHead ){
             withRefSpec("+refs/tags/" + head.getName() + ":refs/tags/" + head.getName());

@@ -180,7 +180,7 @@ public class BitbucketSCMFileSystem extends SCMFileSystem {
                         return null;
                     }
                 } else if (pr.getCheckoutStrategy() == ChangeRequestCheckoutStrategy.HEAD) {
-                    ref = "pull-requests/" + pr.getId() + "/from";
+                    ref = "refs/heads/" + pr.getBranchName();
                 } else if (pr.getCheckoutStrategy() == ChangeRequestCheckoutStrategy.MERGE) {
                     // Bitbucket server v7 doesn't have the `merge` ref for PRs
                     // We don't return `ref` when working with v7
